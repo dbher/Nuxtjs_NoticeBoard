@@ -1,17 +1,21 @@
 <template>
   <div class="container">
     <div class ="header">
-      <!-- <h1 class="title">
-        게시판
-      </h1> -->
-      <button @click="write">새 글 쓰기</button>
+      123345
+      <!-- <NuxtLink to="/submenu/write" id = "sub_menu">글쓰기</NuxtLink>
+      <button @click="write">새 글 쓰기</button> -->
     </div>
-      <h2>목록</h2>
+    <div class = "contents">
+      <h2>목록ㄴㅇㄹㄴㅇㄹ</h2>
       <NuxtLink to="/write" class="linkBtn">글쓰기</NuxtLink>
       <NuxtLink to="/list" class="linkBtn">리스트</NuxtLink>
       <!-- <NuxtLink to="/test" class="linkBtn">테스트</NuxtLink>  -->
-      <Nuxt />
+      <!-- <Nuxt /> -->
+    </div>
+
+
   </div>
+
 </template>
 
 
@@ -25,16 +29,14 @@ export default {
 <style>
 
 .container {
-  width: 100%;
   /* text-align: center; */
   display: flex;
   flex-direction: column;
 }
 
-
-
-h2 {
+contents {
   margin: 10px;
+  background-color: yellow;
 }
 
 .linkBtn {
