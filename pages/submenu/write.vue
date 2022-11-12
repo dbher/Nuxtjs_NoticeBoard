@@ -21,7 +21,8 @@
           </div>
         </div>
         <div class="button_gathering">
-          <button @click ="cancle_writing" class = "cancel_action">취소</button> 
+          <button @click ="non_add_content" class = "nonadd_btn">취소</button> 
+          <!-- <button @click ="add_newwrite" class = "add_btn">추가</button>  -->
         </div>
       </div>
     </div>
@@ -45,31 +46,30 @@ export default {
   },
 
   methods: {
-    cancel_action(){
-        alert("글이 삭제되었습니다! 리스트로 이동합니다");
-        this.$router.push({
-                path: './..'
-            }) 
-      // this.$router.push({path:"/", query:this.body});
+    non_add_content(){
+      confirm('취소하고 게시판으로 돌아갈까요?')
+      .then(result => {
+        this.$router.push('../');
+      })
+      console.log("실행완료");
     },
 
-    write(){
+    add_newwrite(){
+      // let contentIndex = this.$store.state_content.length + 1
 
-      let contentIndex = this.$store.state.list.length + 1
+      // let content = {
 
-      let content = {
-
-        nickname : this.nickname,
-        title : this.title,
-        content : this.content,
-        contentIndex : contentIndex
+      //   nickname : this.nickname,
+      //   title : this.title,
+      //   content : this.content,
+      //   contentIndex : contentIndex
         
-      }
+      // }
 
-      this.$store.dispatch("addContentsToList", content)
-      this.$router.push({
-        path:'/list'
-      })   
+      // this.$store.dispatch("addContentsT_content", content)
+      // this.$router.push({
+      //   path:'_content'
+      // })   
     }
   }
 
@@ -123,6 +123,11 @@ export default {
   margin: 10px auto;
   width: 70%;
 
+}
+
+.button_gathering {
+  margin-top: 20px;
+  text-align: center;
 }
 
 .footer {

@@ -9,7 +9,8 @@
       <h2>글 목록</h2>
       <table class = "table_list">
         <thead>
-          <tr :key="index" v-for="(menu, index) in tableAttributes">
+          <tr>
+          <!-- <tr :key="index" v-for="(menu, index) in tableAttributes"> -->
             <th>글 번호</th>
             <th>글 제목</th>
             <th>글 내용</th>
@@ -38,16 +39,16 @@
 </template>
 
 <script>
-import tableAttributes from '../data_storage/tableAttributes'
+// import tableAttributes from '../data_storage/tableAttributes'
 
-export default {
-  name: 'list',
-  data() {
-    return {
-      tablelist: tablelist
-    }
-  }
-}
+// export default {
+//   name: 'list',
+//   data() {
+//     return {
+//       tablelist: tablelist
+//     }
+//   }
+// }
 </script>
 
 <style>
