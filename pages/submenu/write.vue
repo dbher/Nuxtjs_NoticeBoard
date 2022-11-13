@@ -22,7 +22,7 @@
         </div>
         <div class="button_gathering">
           <button @click ="non_add_content" class = "nonadd_btn">취소</button> 
-          <!-- <button @click ="add_newwrite" class = "add_btn">추가</button>  -->
+          <button @click ="add_newwrite" class = "add_btn">추가</button> 
         </div>
       </div>
     </div>
@@ -47,11 +47,8 @@ export default {
 
   methods: {
     non_add_content(){
-      confirm('취소하고 게시판으로 돌아갈까요?')
-      .then(result => {
-        this.$router.push('../');
-      })
-      console.log("실행완료");
+      if (window.confirm('취소하고 게시판으로 돌아갈까요?'))
+        this.$router.push('/');
     },
 
     add_newwrite(){
