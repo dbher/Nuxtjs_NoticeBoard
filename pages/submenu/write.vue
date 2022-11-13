@@ -3,7 +3,7 @@
     <div class ="header">
       <NuxtLink to="/" id = "main_title">게시판</NuxtLink>
     </div>
-    <div class="content">
+    <div class="ContentTable">
       <div class="write_area">
         <h2>새 글 쓰기</h2>
         <div class="input_content">
@@ -55,21 +55,16 @@ export default {
     },
 
     add_content(){
-      // let contentIndex = this.$store.state_content.length + 1
+      let contentIndex = this.$store.state.content.length + 1;
 
-      // let content = {
-
-      //   nickname : this.nickname,
-      //   title : this.title,
-      //   content : this.content,
-      //   contentIndex : contentIndex
-        
-      // }
-
-      // this.$store.dispatch("addContentsT_content", content)
-      // this.$router.push({
-      //   path:'_content'
-      // })   
+      let content = {
+        nickname : this.nickname,
+        title : this.title,
+        content : this.content,
+        contentIndex : contentIndex
+      };
+      this.$store.dispatch("addContentsToList", content);
+      console.log("123");
     }
   }
 

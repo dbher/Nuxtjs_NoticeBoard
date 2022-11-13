@@ -13,25 +13,23 @@
           <tr :key="index" v-for="(tlist, index) in Tablelist">
             <th>{{tlist.num}}</th>
             <th>{{tlist.title}}</th>
-            <th>{{tlist.content}}</th>
+            <!-- <th>{{tlist.content}}</th> -->
             <th>{{tlist.username}}</th>
-            <!-- <th>글 제목</th> -->
-            <!-- <th>글 내용</th> -->
-            <!-- <th>작성자</th> -->
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>교통비</td>
-            <td>45000</td>
+          <tr :key="index" v-for="(tcontent, index) in callData">
+            <td>{{tcontent.contentIndex}}</td>
+            <td>{{tcontent.title}}</td>
+            <td>{{tcontent.username}}</td>
         </tr>
         </tbody>
-        <tfoot>
+        <!-- <tfoot>
           <tr>
             <td>총 합계</td>
             <td>103000</td>
           </tr>
-        </tfoot>
+        </tfoot> -->
       </table>
     </div>
     <div class="footer">
@@ -49,6 +47,11 @@ export default {
   data() {
     return {
       Tablelist: tableAttributes
+    }
+  },
+  computed: {
+    callData() {
+      // return this.sortedData.slice(this.startPage, this.endPage)
     }
   }
 }
