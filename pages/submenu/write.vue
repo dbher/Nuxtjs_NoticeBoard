@@ -55,7 +55,7 @@ export default {
     },
 
     add_content(){
-      let contentIndex = this.$store.state.content.length + 1;
+      let contentIndex = this.$store.state.list.length + 1;
 
       let content = {
         nickname : this.nickname,
