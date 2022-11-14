@@ -11,6 +11,7 @@ export const mutations = {
 export const actions = {
 	addContentsToList({commit}, list){
 		commit('addContent', list)
+			console.log(list);
 	}
 }
 
@@ -18,7 +19,4 @@ export const getters = {
 	getList(state){
 		return state.list;
 	}
-	// getContents(state) {
-		// return state.list;
-	// }
 }

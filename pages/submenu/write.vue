@@ -65,7 +65,6 @@ export default {
       };
       // console.log(content);
       this.$store.dispatch("addContentsToList", content);
-      console.log(this.$store.state.list[contentIndex-1]);
       // alert ('새 글이 등록되었습니다. 게시판으로 이동합니다.');
       // this.$router.push('/');
     }
