@@ -51,7 +51,8 @@ export default {
   },
   computed: {
     callData() {
-      // return this.sortedData.slice(this.startPage, this.endPage)
+      console.log(this.$store.getters.getList[1]);
+      return(this.$store.getters.getList);
     }
   }
 }

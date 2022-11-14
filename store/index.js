@@ -15,7 +15,10 @@ export const actions = {
 }
 
 export const getters = {
-	reverseList: state => {
-		return state.list.slice().reverse()
+	getList(state){
+		return state.list;
 	}
+	// getContents(state) {
+		// return state.list;
+	// }
 }
