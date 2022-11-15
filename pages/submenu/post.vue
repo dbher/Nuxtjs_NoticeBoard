@@ -4,27 +4,28 @@
       <NuxtLink to="/" id = "main_title">게시판</NuxtLink>
     </div>
     <div class="ContentTable">
-      <!-- <div class="write_area">
+      <div class="post_area">
         <h2>글 제목</h2>
+				<!-- 출력을 해보자........ 왜 불러오기가 안되는 것이냐,,,,, -->
         <div class="input_content">
           <div>닉네임</div>
-          <input placeholder="닉네임을 입력하세요" v-model="nickname" type="text" />
+					
         </div>
         <div class="input_content">
           <div>제 목</div>
-          <input placeholder="제목을 입력하세요" v-model="title" type="text" />
+
         </div>
         <div class="input_content">
           <div>글 내용</div>
           <div>
-            <textarea placeholder="내용을 입력하세요" v-model="content" type="text" />
+
           </div>
         </div>
         <div class="button_gathering">
-          <button @click ="non_add_content" class = "nonadd_btn">취소</button> 
-          <button @click ="add_content" class = "add_btn">추가</button> 
+          <!-- <button @click ="non_add_content" class = "nonadd_btn">취소</button>  -->
+          <!-- <button @click ="add_content" class = "add_btn">추가</button>  -->
         </div>
-      </div> -->
+      </div>
     </div>
       <!-- <Nuxt /> -->
     <div class="footer">
@@ -45,6 +46,14 @@ export default {
     }
   },
 
+  computed: {
+		postList() {
+			// const index = this.$route.params.contentIndex
+			// console.log(this.$route.params.contentList.filter(item.contentIndex === index))
+			// return this.$route.params.contentList.filter(item.contentIndex === index)
+		}
+  },
+	
   methods: {
     non_add_content(){
       if (window.confirm('취소하고 게시판으로 돌아갈까요?'))
@@ -65,12 +74,6 @@ export default {
       // alert ('새 글이 등록되었습니다. 게시판으로 이동합니다.');
       // this.$router.push('/');
     }
-  },
-
-  computed: {
-    // get_tlist(){
-    //   console.log(this.$store.state.list);
-    // }
   }
 
 }
