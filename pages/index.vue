@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr :key="index" v-for="(tcontent, index) in callData">
+          <tr :key="index" v-for="(tcontent, index) in callData" @click="moveToPost(index)">
             <td>{{tcontent.contentIndex}}</td>
             <td>{{tcontent.title}}</td>
             <td>{{tcontent.nickname}}</td>
@@ -44,10 +44,28 @@ export default {
       Tablelist: tableAttributes
     }
   },
+
   computed: {
     callData() {
       console.log(this.$store.getters.getList);
       return(this.$store.getters.getList);
+    },
+    loadListData() {
+      return this.$store.getters.getlist;
+    }
+  },
+
+  methods: {
+    moveToPost(index) {
+      const postIndex = this.callData[index].contentIndex;
+      this.$router.push({
+        name: 'submenu-post',
+        params: {
+          contentID: postIndex,
+          contentList: this.loadListData
+        },
+        path:'/submenu/post'
+      })
     }
   }
 }

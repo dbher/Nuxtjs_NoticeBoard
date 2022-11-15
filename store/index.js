@@ -18,5 +18,8 @@ export const actions = {
 export const getters = {
 	getList(state){
 		return state.list;
-	}
+	},
+	// reverseList: state => {
+	// 	return state.list.slice().reverse();
+	// }
 }
