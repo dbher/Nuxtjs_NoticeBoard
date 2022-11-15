@@ -13,23 +13,18 @@
           <tr :key="index" v-for="(tlist, index) in Tablelist">
             <th>{{tlist.num}}</th>
             <th>{{tlist.title}}</th>
-            <!-- <th>{{tlist.content}}</th> -->
             <th>{{tlist.username}}</th>
+            <th>{{tlist.content}}</th>
           </tr>
         </thead>
         <tbody>
           <tr :key="index" v-for="(tcontent, index) in callData">
             <td>{{tcontent.contentIndex}}</td>
             <td>{{tcontent.title}}</td>
-            <td>{{tcontent.username}}</td>
+            <td>{{tcontent.nickname}}</td>
+            <td>{{tcontent.content}}</td>
         </tr>
         </tbody>
-        <!-- <tfoot>
-          <tr>
-            <td>총 합계</td>
-            <td>103000</td>
-          </tr>
-        </tfoot> -->
       </table>
     </div>
     <div class="footer">
@@ -51,7 +46,7 @@ export default {
   },
   computed: {
     callData() {
-      console.log(this.$store.getters.getList[1]);
+      console.log(this.$store.getters.getList);
       return(this.$store.getters.getList);
     }
   }
