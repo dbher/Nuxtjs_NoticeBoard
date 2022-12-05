@@ -7,20 +7,20 @@
       <div class="post_area">
         <h2>글 제목</h2>
         <div class="input_content">
-          <div>닉네임</div>
-					<div>{{findList.nickname}}</div>
-        </div>
-        <div class="input_content">
           <div>제 목</div>
           <div>{{findList.title}}</div>
+        </div>
+        <div class="input_content">
+          <div>닉네임</div>
+          <div>{{findList.nickname}}</div>
         </div>
         <div class="input_content">
           <div>글 내용</div>
           <div>{{findList.content}}</div>
         </div>
         <div class="button_gathering">
-          <!-- <button @click ="revice_content" class = "revicePost">수정</button>  -->
-          <!-- <button @click ="delete_post" class = "deletePost">삭제</button>  -->
+          <button @click ="revice_content" class = "revicePost">수정</button> 
+          <button @click ="delete_post" class = "deletePost">삭제</button> 
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@ export default {
 
 <style>
  .header{
-  background-color:purple;
+  background-color:#e1bee7;
   height: 70px;
   position: relative;
  }
@@ -95,7 +95,7 @@ export default {
   width: 50%;
   height: 100%;
   align-items: center;
-  background-color: lightsalmon;
+  background-color: #fff1ff;
   margin: 70px auto 50px;
   padding: 5px;
   /* border: 10px solid black; */
@@ -126,7 +126,7 @@ export default {
   bottom: 0px;
   width: 100%;
   height: 50px;
-  background-color: purple;
+  background-color: #e1bee7;
 }
 
 </style>

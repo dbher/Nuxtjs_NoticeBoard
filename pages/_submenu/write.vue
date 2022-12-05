@@ -81,7 +81,7 @@ export default {
 
 <style>
  .header{
-  background-color:purple;
+  background-color:#e1bee7;
   height: 70px;
   position: relative;
  }
@@ -106,7 +106,7 @@ export default {
   width: 50%;
   height: 100%;
   align-items: center;
-  background-color: lightsalmon;
+  background-color: #fff1ff;
   margin: 70px auto 50px;
   padding: 5px;
   /* border: 10px solid black; */
@@ -137,7 +137,7 @@ export default {
   bottom: 0px;
   width: 100%;
   height: 50px;
-  background-color: purple;
+  background-color: #e1bee7;
 }
 
 </style>

@@ -84,7 +84,7 @@ body {
 }
 
  .header{
-  background-color:purple;
+  background-color:#e1bee7;
   height: 70px;
   position: relative;
   display: flex;
@@ -110,12 +110,27 @@ body {
   color: white;
 }
 
+table {
+  width: 600px;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
+}
+td, th {
+  border-bottom: 1px solid gray;
+  padding: 5px;
+}
+th {
+  background-color: #af8eb5;
+}
+
+
 .footer {
   position: absolute;
   bottom: 0px;
   width: 100%;
   height: 50px;
-  background-color: purple;
+  background-color: #e1bee7;
 }
 
 </style>
