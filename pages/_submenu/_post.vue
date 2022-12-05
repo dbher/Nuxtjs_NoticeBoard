@@ -6,24 +6,21 @@
     <div class="ContentTable">
       <div class="post_area">
         <h2>글 제목</h2>
-				<!-- 출력을 해보자........ 왜 불러오기가 안되는 것이냐,,,,, -->
         <div class="input_content">
           <div>닉네임</div>
-					
+					<div>{{findList.nickname}}</div>
         </div>
         <div class="input_content">
           <div>제 목</div>
-
+          <div>{{findList.title}}</div>
         </div>
         <div class="input_content">
           <div>글 내용</div>
-          <div>
-
-          </div>
+          <div>{{findList.content}}</div>
         </div>
         <div class="button_gathering">
-          <!-- <button @click ="non_add_content" class = "nonadd_btn">취소</button>  -->
-          <!-- <button @click ="add_content" class = "add_btn">추가</button>  -->
+          <!-- <button @click ="revice_content" class = "revicePost">수정</button>  -->
+          <!-- <button @click ="delete_post" class = "deletePost">삭제</button>  -->
         </div>
       </div>
     </div>
@@ -36,43 +33,35 @@
 
 
 <script>
+
 export default {
-  name: 'write',
+  name: 'list',
   data() {
     return {
-      nickname: '',
-      title: '',
-      content: '',
+      // Tablelist: tableAttributes
     }
   },
 
   computed: {
-		postList() {
-			// const index = this.$route.params.contentIndex
-			// console.log(this.$route.params.contentList.filter(item.contentIndex === index))
-			// return this.$route.params.contentList.filter(item.contentIndex === index)
-		}
+
+    index(){
+      return this.$route.params.post
+    },
+
+    callData(){
+      return this.$store.state.list
+    },
+
+		findList() {
+      
+
+      return this.callData[this.index]
+    }
   },
 	
   methods: {
-    non_add_content(){
-      if (window.confirm('취소하고 게시판으로 돌아갈까요?'))
-        this.$router.push('/');
-    },
-
-    add_content(){
-      let contentIndex = this.$store.state.list.length + 1;
-
-      let content = {
-        nickname : this.nickname,
-        title : this.title,
-        content : this.content,
-        contentIndex : contentIndex
-      };
-      console.log(content);
-      this.$store.dispatch("addContentsToList", content);
-      // alert ('새 글이 등록되었습니다. 게시판으로 이동합니다.');
-      // this.$router.push('/');
+    checkContent (){
+      console.log(contentIndex)
     }
   }
 
@@ -93,7 +82,6 @@ export default {
   color: white;
   top: 17px;
   left: 10px;
-  background-color:black;
 }
 
 .container {

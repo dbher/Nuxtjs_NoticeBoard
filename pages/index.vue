@@ -3,13 +3,12 @@
   <div class="defalut_components">
     <div class="header">
       <NuxtLink to="/" id = "main_title">게시판</NuxtLink>
-      <NuxtLink to="/submenu/write" id = "sub_menu">글쓰기</NuxtLink>
+      <NuxtLink to="/_submenu/write" id = "sub_menu">글쓰기</NuxtLink>
     </div>
     <div class = "ContentTable">
       <h2>글 목록</h2>
       <table class = "table_list">
         <thead>
-          <!-- <tr> -->
           <tr :key="index" v-for="(tlist, index) in Tablelist">
             <th>{{tlist.num}}</th>
             <th>{{tlist.title}}</th>
@@ -18,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr :key="index" v-for="(tcontent, index) in callData" @click="moveToPost(index)">
+          <tr :key="index" v-for="(tcontent, index) in callData" @click="moveToPost(tcontent.contentIndex)">
             <td>{{tcontent.contentIndex}}</td>
             <td>{{tcontent.title}}</td>
             <td>{{tcontent.nickname}}</td>
@@ -49,23 +48,27 @@ export default {
     callData() {
       console.log(this.$store.getters.getList);
       return(this.$store.getters.getList);
-    },
-    loadListData() {
-      return this.$store.getters.getlist;
     }
   },
 
   methods: {
     moveToPost(index) {
-      const postIndex = this.callData[index].contentIndex;
-      this.$router.push({
-        name: 'submenu-post',
-        params: {
-          contentID: postIndex,
-          contentList: this.loadListData
-        },
-        path:'/submenu/post'
-      })
+
+      const postIndex = this.callData.findIndex(el=>
+        index === el.contentIndex
+      )
+      
+      this.$router.push('/_submenu/'+postIndex)
+
+      // const postIndex = this.callData[index].contentIndex;
+      // this.$router.push({
+      //   name: '_submenu-_post',
+      //   params: {
+      //     contentID: postIndex,
+      //     // contentList: this.callData
+      //   },
+      //   path:'/_submenu/_post'
+      // })
     }
   }
 }
@@ -94,7 +97,6 @@ body {
   font-size: 30px;
   color: white;
   left: 10px;
-  background-color:black;
 }
 
 .header #sub_menu {

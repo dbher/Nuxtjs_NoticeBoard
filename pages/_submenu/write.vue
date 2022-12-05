@@ -93,7 +93,6 @@ export default {
   color: white;
   top: 17px;
   left: 10px;
-  background-color:black;
 }
 
 .container {
