@@ -65,8 +65,8 @@ export default {
       };
       console.log(content);
       this.$store.dispatch("addContentsToList", content);
-      // alert ('새 글이 등록되었습니다. 게시판으로 이동합니다.');
-      // this.$router.push('/');
+      alert ('새 글이 등록되었습니다. 게시판으로 이동합니다.');
+      this.$router.push('/');
     }
   },
 
