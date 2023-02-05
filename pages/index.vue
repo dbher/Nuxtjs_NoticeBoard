@@ -110,11 +110,24 @@ body {
   color: white;
 }
 
+.ContentTable {
+  width: 90%;
+  height: 100%;
+  align-items: center;
+  background-color: #fff1ff;
+  margin: 70px auto 50px;
+  padding: 5px;
+  /* border: 10px solid black; */
+}
+
 table {
-  width: 600px;
+  /* width: 600px; */
+  width: 100%;
+  /* left: 5%; */
   border-collapse: collapse;
   text-align: center;
   table-layout: fixed;
+  /* transform: translate(-50%); */
 }
 td, th {
   border-bottom: 1px solid gray;

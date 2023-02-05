@@ -103,7 +103,7 @@ export default {
 }
 
 .ContentTable {
-  width: 50%;
+  width: 90%;
   height: 100%;
   align-items: center;
   background-color: #fff1ff;
