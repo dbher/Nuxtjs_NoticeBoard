@@ -19,7 +19,7 @@
           <div>{{findList.content}}</div>
         </div>
         <div class="button_gathering">
-          <button @click ="revice_content" class = "revicePost">수정</button> 
+          <!-- <button @click =" " class = "revicePost">수정</button>  -->
           <button @click ="delete_post" class = "deletePost">삭제</button> 
         </div>
       </div>
@@ -35,6 +35,7 @@
 <script>
 
 export default {
+  ssr: 'false',
   name: 'list',
   data() {
     return {
@@ -53,8 +54,6 @@ export default {
     },
 
 		findList() {
-      
-
       return this.callData[this.index]
     }
   },
@@ -62,6 +61,14 @@ export default {
   methods: {
     checkContent (){
       console.log(contentIndex)
+    },
+
+    delete_post (){
+      const deleteIndex = this.$route.params.contentIndex;
+
+      this.$store.dispatch("deleteContentsToList", deleteIndex);
+      alert("글 삭제가 완료되었습니다. 게시판으로 이동합니다");
+      this.$router.push('/');
     }
   }
 
