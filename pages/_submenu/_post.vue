@@ -19,8 +19,9 @@
           <div>{{findList.content}}</div>
         </div>
         <div class="button_gathering">
-          <!-- <button @click =" " class = "revicePost">수정</button>  -->
-          <button @click ="delete_post" class = "deletePost">삭제</button> 
+          <!-- <button @click ="updatePost" class = "revicePost">수정</button>  -->
+          <button @click ="updatePost" class = "revicePost">수정</button> 
+          <button @click ="deletePost" class = "deletePost">삭제</button> 
         </div>
       </div>
     </div>
@@ -63,12 +64,25 @@ export default {
       console.log(contentIndex)
     },
 
-    delete_post (){
+    deletePost (){
       const deleteIndex = this.$route.params.contentIndex;
 
       this.$store.dispatch("deleteContentsToList", deleteIndex);
       alert("글 삭제가 완료되었습니다. 게시판으로 이동합니다");
       this.$router.push('/');
+    },
+
+    updatePost (){
+      const updateIndex = this.contentIndex;
+
+      this.$router.push({
+        name: 'update',
+        params: {
+          targetIndex: updateIndex,
+          targetList: this.findList
+        },
+        path: '/_submenu/update'
+      });
     }
   }
 
