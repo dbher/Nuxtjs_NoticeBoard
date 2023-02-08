@@ -24,9 +24,6 @@
           <button @click ="non_add_content" class = "nonadd_btn">취소</button> 
           <button @click ="add_content" class = "add_btn">추가</button> 
         </div>
-        <!-- <h1>{{this.nickname}}</h1> -->
-        <!-- <h1>{{this.title}}</h1> -->
-        <!-- <h1>{{this.content}}</h1> -->
       </div>
     </div>
       <!-- <Nuxt /> -->

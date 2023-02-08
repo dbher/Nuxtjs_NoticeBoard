@@ -53,22 +53,10 @@ export default {
 
   methods: {
     moveToPost(index) {
-
       const postIndex = this.callData.findIndex(el=>
         index === el.contentIndex
       )
-      
       this.$router.push('/_submenu/'+postIndex)
-
-      // const postIndex = this.callData[index].contentIndex;
-      // this.$router.push({
-      //   name: '_submenu-_post',
-      //   params: {
-      //     contentID: postIndex,
-      //     // contentList: this.callData
-      //   },
-      //   path:'/_submenu/_post'
-      // })
     }
   }
 }
