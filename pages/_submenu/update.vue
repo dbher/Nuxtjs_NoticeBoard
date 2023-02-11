@@ -74,7 +74,7 @@ export default {
 			content : this.content,
 			contentIndex : this.contentIndex
 		}
-			console.log(this.contentIndex);
+			// console.log(this.contentIndex);
 			console.log(updateList);
 			this.$store.dispatch("updateContentsToList", updateList.contentIndex, updateList);
 			alert( "글이 수정되었습니다. 게시판으로 이동합니다." );

@@ -1,11 +1,5 @@
 export const state = () => ({
-	list: [],
-	content: {
-		nickname: '',
-		title: '',
-		content: '',
-		contentIndex: ''
-	}
+	list: []
 });
 
 export const mutations = {
@@ -17,7 +11,7 @@ export const mutations = {
 		state.list.splice(index, 1);
 	},
 
-	updateConetent(state, index, content){
+	updateContent(state, index, content){
 		state.list.splice(index, 1, content)
 	}
 }
@@ -36,7 +30,8 @@ export const actions = {
 	updateContentsToList({commit}, index, content){
 		console.log(index);
 		console.log(content);
-		commit('updateContent', index, content)
+		if (content != undefined) //박살방지용
+			commit('updateContent', index, content)
 	}
 }
 
