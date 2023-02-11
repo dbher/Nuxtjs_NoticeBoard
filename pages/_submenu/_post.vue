@@ -86,6 +86,7 @@ export default {
 				nickname: this.findList.nickname,
 				title   : this.findList.title,
 				content : this.findList.content,
+				contentIndex : this.findList.contentIndex
 			};
 
 			this.$router.push( {

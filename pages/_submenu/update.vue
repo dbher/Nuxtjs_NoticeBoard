@@ -43,19 +43,24 @@ export default {
 			nickname: "",
 			title   : "",
 			content : "",
+			contentIndex : ""
 		};
 	},
+
 	mounted() {
 		const {
 			      nickname,
 			      title,
 			      content,
+				  contentIndex
 		} = this.$route.query.targetList;
 
 		this.nickname = nickname;
 		this.title = title;
 		this.content = content;
+		this.contentIndex = contentIndex;
 	},
+
 	methods: {
 		non_update_content() {
 			if( window.confirm( "취소하고 게시판으로 돌아갈까요?" ) )
@@ -69,11 +74,11 @@ export default {
 			content : this.content,
 			contentIndex : this.contentIndex
 		}
-			
+			console.log(updateList.contentIndex);
 			console.log(updateList);
 			this.$store.dispatch("updateContentsToList", updateList.contentIndex, updateList);
 			alert( "글이 수정되었습니다. 게시판으로 이동합니다." );
-
+			// this.$router.push( "/" );
 		},
 	},
 

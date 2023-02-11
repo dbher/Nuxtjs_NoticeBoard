@@ -34,8 +34,9 @@ export const actions = {
 	},
 
 	updateContentsToList({commit}, index, content){
+		console.log(index);
+		console.log(content);
 		commit('updateContent', index, content)
-			console.log(content);
 	}
 }
 
