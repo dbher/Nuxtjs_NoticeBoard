@@ -72,7 +72,7 @@ export default {
 		},
 
 		deletePost() {
-			const deleteIndex = this.$route.params.contentIndex;
+			const deleteIndex = this.findList.contentIndex;
 
 			this.$store.dispatch( "deleteContentsToList", deleteIndex );
 			alert( "글 삭제가 완료되었습니다. 게시판으로 이동합니다" );
@@ -80,7 +80,6 @@ export default {
 		},
 
 		updatePost() {
-			const updateIndex = this.contentIndex;
 
 			const params = {
 				nickname: this.findList.nickname,
@@ -88,7 +87,7 @@ export default {
 				content : this.findList.content,
 				contentIndex : this.findList.contentIndex
 			};
-
+			console.log(params.contentIndex);
 			this.$router.push( {
 				path : "/_submenu/update",
 				query: { targetList: params },
