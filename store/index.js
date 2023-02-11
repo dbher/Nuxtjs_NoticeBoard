@@ -1,5 +1,11 @@
 export const state = () => ({
-	list: []
+	list: [],
+	content: {
+		nickname: '',
+		title: '',
+		content: '',
+		contentIndex: ''
+	}
 });
 
 export const mutations = {
@@ -9,6 +15,10 @@ export const mutations = {
 
 	deleteContent(state, index){
 		state.list.splice(index, 1);
+	},
+
+	updateConetent(state, index, content){
+		state.list.splice(index, 1, content)
 	}
 }
 
@@ -21,6 +31,11 @@ export const actions = {
 	deleteContentsToList({commit}, index){
 		commit('deleteContent', index)
 			console.log(index);
+	},
+
+	updateContentsToList({commit}, index, content){
+		commit('updateContent', index, content)
+			console.log(content);
 	}
 }
 
