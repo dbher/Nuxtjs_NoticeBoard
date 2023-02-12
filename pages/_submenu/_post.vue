@@ -27,10 +27,24 @@
 		<div class="comment_area">
 			<div class="add_comment">
 				<h3>댓글창</h3>
-				<span>닉네임</span>
-				<input type="text">
-				<span>댓글</span>
-				<button>댓글달기</button>
+				<div class="input_comment_area">
+					<span>닉네임</span>
+					<input placeholder="닉네임" v-model="commentNickname" type="text" />
+					<span>댓글</span>
+					<input placeholder="댓글을 입력하세요" v-model="commentContent" type="text" />
+				<button @click="addComment">댓글달기</button>
+				</div>
+				<div class="commentTable">
+					<div :key="index" v-for="(user, index) in findCommentData" class="comment_box">
+						<div>
+							<span>{{user.commentNickname}}</span>
+							<span>/</span>
+							<span>{{user.commentContent}}</span>
+							<span @click="deleteComment">[삭제]</span>
+							<span>[수정]</span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- <Nuxt /> -->
@@ -47,6 +61,9 @@ export default {
 	name: "list",
 	data() {
 		return {
+			commentID: '',
+			commentContent: '',
+			commentList: ''
 			// Tablelist: tableAttributes
 		};
 	},
@@ -64,6 +81,12 @@ export default {
 		findList() {
 			return this.callData[ this.index ];
 		},
+
+		findCommentData () {
+			return this.$store.state.commentList.filter(comment => {
+				return comment.contentId === this.contentIndex;
+			})
+		}
 	},
 
 	methods: {
@@ -93,6 +116,25 @@ export default {
 				query: { targetList: params },
 			} );
 		},
+
+		addComment() {
+			let commentIndex = this.commentList.length + 1;
+
+            let commentData = {
+                commentContentId: this.findList.contentIndex,
+                commentNickname: this.commentNickname,
+                commentContent: this.commentContent
+            }
+			console.log("contentIndex");
+			console.log(commentData.commentContentId);
+			this.$store.dispatch("addCommentToList", commentData);
+		},
+
+		deleteComment() {
+			const deleteIndex = commentData.commentContentId;
+
+			this.$store.dispatch("deleteComment", deleteIndex);
+		}
 	},
 
 };
@@ -142,7 +184,7 @@ export default {
 }
 
 .comment_area button{
-	background: red;
+	/* background: red;  */
 	align-items: right;
 	text-align: right;
 }

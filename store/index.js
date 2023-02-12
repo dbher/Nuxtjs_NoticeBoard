@@ -1,5 +1,6 @@
 export const state = () => ({
-	list: []
+	list: [],
+	commentList: []
 });
 
 export const mutations = {
@@ -12,7 +13,15 @@ export const mutations = {
 	},
 
 	updateContent(state, index, content){
-		state.list.splice(index, 1, content)
+		state.list.splice(index, 1, content);
+	},
+
+	addComment(state, comment){
+		state.commentList.push(comment);
+	},
+
+	deleteComment(state, index){
+		state.commentList.splice(index, 1);
 	}
 }
 
@@ -29,9 +38,17 @@ export const actions = {
 
 	updateContentsToList({commit}, index, content){
 		console.log(index);
-		console.log(content);
+		console.log(content); //content undefined 이슈 있음
 		if (content != undefined) //박살방지용
-			commit('updateContent', index, content)
+			commit('updateContent', index, content);
+	},
+
+	addCommentToList({commit}, list){
+		commit('addComment', list)
+	},
+
+	deleteCommentToList({commit}, index){
+		commit('deleteComment', index);
 	}
 }
 
