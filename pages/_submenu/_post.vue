@@ -89,7 +89,7 @@ export default {
 
     findCommentData() {
       return this.$store.state.commentList.filter((comment) => {
-        return comment.contentId === this.contentIndex;
+        return comment.postId === this.findList.contentIndex;
       });
     },
   },
@@ -129,7 +129,7 @@ export default {
       console.log("commentIndex");
       console.log(commentIndex);
       let commentData = {
-        commentContentId: this.findList.contentIndex,
+        postId: this.findList.contentIndex,
         commentIndex: commentIndex,
         commentNickname: this.commentNickname,
         commentContent: this.commentContent,
