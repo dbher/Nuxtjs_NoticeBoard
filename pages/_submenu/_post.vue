@@ -48,7 +48,7 @@
               <span>{{ user.commentNickname }}</span>
               <span>/</span>
               <span>{{ user.commentContent }}</span>
-              <span @click="deleteComment">[삭제]</span>
+              <span @click="deleteComment(index)">[삭제]</span>
             </div>
           </div>
         </div>
@@ -138,13 +138,8 @@ export default {
       this.$store.dispatch("addCommentToList", commentData);
     },
 
-    deleteComment() {
-      const deleteIndex = this.contentIndex;
-      console.log("삭제 인덱스");
-      // console.log(deleteIndex);
-      console.log(this);
-
-      this.$store.dispatch("deleteCommentToList", deleteIndex);
+    deleteComment(index) {
+      this.$store.dispatch("deleteCommentToList", index);
     },
   },
 };
