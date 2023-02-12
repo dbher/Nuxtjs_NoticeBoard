@@ -131,9 +131,9 @@ export default {
 		},
 
 		deleteComment() {
-			const deleteIndex = commentData.commentContentId;
+			const deleteIndex = this.findCommentData.commentContentId;
 
-			this.$store.dispatch("deleteComment", deleteIndex);
+			this.$store.dispatch("deleteCommentToList", deleteIndex);
 		}
 	},
 
