@@ -9,6 +9,7 @@
       <h2>글 목록</h2>
       <table class = "table_list">
         <thead>
+          <!-- 보통은 이렇게 따로 안 빼고 computed로 뺌 -->
           <tr :key="index" v-for="(tlist, index) in Tablelist">
             <th>{{tlist.num}}</th>
             <th>{{tlist.title}}</th>
@@ -41,8 +42,12 @@ export default {
   data() {
     return {
       Tablelist: tableAttributes
-    }
-  },
+      // 
+
+      }
+      // 
+    },
+  
 
   computed: {
     callData() {

@@ -136,6 +136,8 @@ export default {
       };
       console.log(commentData);
       this.$store.dispatch("addCommentToList", commentData);
+      this.commentNickname = "";
+      this.commentContent = "";
     },
 
     deleteComment(index) {

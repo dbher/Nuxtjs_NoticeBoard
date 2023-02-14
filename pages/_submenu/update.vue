@@ -61,6 +61,8 @@ export default {
         this.$router.push("/");
     },
 
+//...넣어서 하고 있음
+
     update_content() {
       let editedPost = {
         nickname: this.nickname,
@@ -75,7 +77,7 @@ export default {
 
       this.$store.dispatch("updateContentsToList", editedPost);
       alert("글이 수정되었습니다. 게시판으로 이동합니다.");
-      // this.$router.push( "/" );
+      this.$router.push( "/" );
     },
   },
 
