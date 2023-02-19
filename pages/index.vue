@@ -28,9 +28,9 @@
       </table>
     </div>
     <div class="paginationArea">
-      <span>&lt;</span>
+      <span @click="moveLeftPage">&lt;</span>
       <span>{{pageNum}}/{{allPageNum}}</span>
-      <span>></span>
+      <span @click="moveRightPage">></span>
     </div>
     <!-- <div class="footer">
       
@@ -51,7 +51,7 @@ export default {
       // allPageNum : 10,
       slicePage : 3
       }
-    },
+  },
   
 
   computed: {
@@ -66,7 +66,6 @@ export default {
     },
 
     lastIndex() {
-      console.log(this.firstIndex+this.slicePage);
       return(this.firstIndex + this.slicePage);
     },
 
@@ -80,6 +79,16 @@ export default {
   },
 
   methods: {
+    moveLeftPage (){
+      if (this.pageNum !== 1)
+        this.pageNum -= 1;
+    },
+
+    moveRightPage () {
+      if (this.allPageNum !== this.pageNum)
+      this.pageNum += 1;
+    },
+
     moveToPost(index) {
       const postIndex = this.callData.findIndex(el=>
         index === el.contentIndex
