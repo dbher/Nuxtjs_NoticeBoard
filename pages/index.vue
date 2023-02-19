@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr :key="index" v-for="(tcontent, index) in callData" @click="moveToPost(tcontent.contentIndex)">
+          <tr :key="index" v-for="(tcontent, index) in loadData" @click="moveToPost(tcontent.contentIndex)">
             <td>{{tcontent.contentIndex}}</td>
             <td>{{tcontent.title}}</td>
             <td>{{tcontent.nickname}}</td>
@@ -28,11 +28,13 @@
       </table>
     </div>
     <div class="paginationArea">
-      
+      <span>&lt;</span>
+      <span>{{pageNum}}/{{allPageNum}}</span>
+      <span>></span>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       
-    </div>
+    </div> -->
 
   </div>
 </template>
@@ -44,18 +46,35 @@ export default {
   name: 'list',
   data() {
     return {
-      Tablelist: tableAttributes
-      // 
-
+      Tablelist: tableAttributes,
+      pageNum : 1,
+      // allPageNum : 10,
+      slicePage : 3
       }
-      // 
     },
   
 
   computed: {
     callData() {
       console.log(this.$store.getters.getList);
+
       return(this.$store.getters.getList);
+    },
+
+    firstIndex() {
+      return ((this.pageNum - 1) * this.slicePage);
+    },
+
+    lastIndex() {
+      return(this.firstIndex + this.slicePage);
+    },
+
+    loadData() {
+      this.callData.slice(this.firstIndex, this.LastIndex);
+    },
+
+    allPageNum() {
+      return((this.callData.length + 1) / this.slicePage);
     }
   },
 
@@ -133,6 +152,13 @@ th {
   background-color: #af8eb5;
 }
 
+.paginationArea{
+  background-color: #af8eb5;
+  /* align-items: center; */
+  justify-content: center;
+  display: flex;
+
+}
 
 .footer {
   position: absolute;
