@@ -27,6 +27,9 @@
         </tbody>
       </table>
     </div>
+    <div class="paginationArea">
+      
+    </div>
     <div class="footer">
       
     </div>

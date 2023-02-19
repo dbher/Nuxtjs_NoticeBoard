@@ -51,7 +51,9 @@ export const actions = {
 
 export const getters = {
 	getList(state) {
-		return state.list;
+		// return state.list;
+		const list = JSON.parse(JSON.stringify(state.list));
+		return (list.reverse());
 	},
 	// reverseList: state => {
 	// 	return state.list.slice().reverse();
