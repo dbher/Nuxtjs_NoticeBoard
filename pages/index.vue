@@ -74,7 +74,7 @@ export default {
     },
 
     allPageNum() {
-      return(parseInt((this.callData.length + 1) / this.slicePage));
+      return(Math.ceil((this.callData.length + 1) / this.slicePage));
     }
   },
 
