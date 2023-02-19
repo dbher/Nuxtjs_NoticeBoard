@@ -41,7 +41,7 @@ export default {
     return {
       nickname: '',
       title: '',
-      content: '',
+      content: ''
     }
   },
 

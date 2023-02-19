@@ -66,15 +66,16 @@ export default {
     },
 
     lastIndex() {
+      console.log(this.firstIndex+this.slicePage);
       return(this.firstIndex + this.slicePage);
     },
 
     loadData() {
-      this.callData.slice(this.firstIndex, this.LastIndex);
+      return(this.callData.slice(this.firstIndex, this.lastIndex));
     },
 
     allPageNum() {
-      return((this.callData.length + 1) / this.slicePage);
+      return(parseInt((this.callData.length + 1) / this.slicePage));
     }
   },
 
