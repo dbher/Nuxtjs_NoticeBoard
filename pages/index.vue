@@ -31,7 +31,20 @@
       <span @click="moveLeftPage">&lt;</span>
       <span>{{pageNum}}/{{allPageNum}}</span>
       <span @click="moveRightPage">></span>
+      <div></div>
+      <span @click="moveLeftIndex">&lt;&lt;</span>
+      <span @click="moveLeftPage">&lt;</span>
+      <div>
+        <span @click="movePage(pageIndex_first)">[{{pageIndex_first}}]</span>
+        <span @click="movePage(pageIndex_second)">[{{pageIndex_second}}]</span>
+        <span @click="movePage(pageIndex_third)">[{{pageIndex_third}}]</span>
+        <span @click="movePage(pageIndex_fourth)">[{{pageIndex_fourth}}]</span>
+        <span @click="movePage(pageIndex_fifth)">[{{pageIndex_fifth}}]</span>
+      </div>
+      <span @click="moveRightPage">></span>
+      <span @click="moveRightIndex">>></span>
     </div>
+    
     <!-- <div class="footer">
       
     </div> -->
@@ -48,6 +61,7 @@ export default {
     return {
       Tablelist: tableAttributes,
       pageNum : 1,
+      pageIndex : 1,
       // allPageNum : 10,
       slicePage : 3
       }
@@ -69,6 +83,19 @@ export default {
       return(this.firstIndex + this.slicePage);
     },
 
+    pageIndex_first() {
+      return(this.pageIndex);
+    },
+    pageIndex_second() {
+      return(this.pageIndex + 1);
+    },    pageIndex_third() {
+      return(this.pageIndex + 2);
+    },    pageIndex_fourth() {
+      return(this.pageIndex + 3);
+    },    pageIndex_fifth() {
+      return(this.pageIndex + 4);
+    },
+    
     loadData() {
       return(this.callData.slice(this.firstIndex, this.lastIndex));
     },
@@ -86,7 +113,12 @@ export default {
 
     moveRightPage () {
       if (this.allPageNum !== this.pageNum)
-      this.pageNum += 1;
+        this.pageNum += 1;
+    },
+
+    movePage (pageIndex_seq) {
+      if (pageIndex_seq)
+        this.pageNum = this.pageNum;
     },
 
     moveToPost(index) {
