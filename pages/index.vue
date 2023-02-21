@@ -30,18 +30,14 @@
     <div>
     </div>
     <div class="paginationArea">
-      <button @click="moveLeftPage">&lt;</button>
-      <span>{{pageNum}}/{{allPageNum}}</span>
-      <button @click="moveRightPage">></button>
-      <div></div>
       <!-- <span @click="moveLeftIndex">&lt;&lt;</span> -->
       <span @click="moveLeftPage">&lt;</span>
       <div>
-        <button @click="movePage(pageIndex_first)">[{{pageIndex_first}}]</button>
-        <button @click="movePage(pageIndex_second)">[{{pageIndex_second}}]</button>
-        <button @click="movePage(pageIndex_third)">[{{pageIndex_third}}]</button>
-        <button @click="movePage(pageIndex_fourth)">[{{pageIndex_fourth}}]</button>
-        <button @click="movePage(pageIndex_fifth)">[{{pageIndex_fifth}}]</button>
+        <button @click="movePage(pageIndex_first)">{{pageIndex_first}}</button>
+        <button @click="movePage(pageIndex_second)">{{pageIndex_second}}</button>
+        <button @click="movePage(pageIndex_third)">{{pageIndex_third}}</button>
+        <button @click="movePage(pageIndex_fourth)">{{pageIndex_fourth}}</button>
+        <button @click="movePage(pageIndex_fifth)">{{pageIndex_fifth}}</button>
       </div>
       <span @click="moveRightPage">></span>
       <!-- <span @click="moveRightIndex">>></span> -->
@@ -91,11 +87,9 @@ export default {
     },
 
     pageIndex_first() {
-      this.pageNum = 1;
       return(this.pageIndex);
     },
     pageIndex_second() {
-      this.pageNum = 2;
       return(this.pageIndex + 1);
     },    pageIndex_third() {
       return(this.pageIndex + 2);
@@ -127,7 +121,7 @@ export default {
 
     movePage (pageIndex_seq) {
       if (pageIndex_seq <= this.allPageNum)
-        this.pageNum == pageIndex_seq;
+        this.pageNum = pageIndex_seq;
     },
 
     moveToPost(index) {
