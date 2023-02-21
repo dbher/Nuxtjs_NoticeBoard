@@ -27,6 +27,8 @@
         </tbody>
       </table>
     </div>
+    <div>
+    </div>
     <div class="paginationArea">
       <button @click="moveLeftPage">&lt;</button>
       <span>{{pageNum}}/{{allPageNum}}</span>
@@ -35,11 +37,11 @@
       <!-- <span @click="moveLeftIndex">&lt;&lt;</span> -->
       <span @click="moveLeftPage">&lt;</span>
       <div>
-        <span @click="movePage(pageIndex_first)">[{{pageIndex_first}}]</span>
-        <span @click="movePage(pageIndex_second)">[{{pageIndex_second}}]</span>
-        <span @click="movePage(pageIndex_third)">[{{pageIndex_third}}]</span>
-        <span @click="movePage(pageIndex_fourth)">[{{pageIndex_fourth}}]</span>
-        <span @click="movePage(pageIndex_fifth)">[{{pageIndex_fifth}}]</span>
+        <button @click="movePage(pageIndex_first)">[{{pageIndex_first}}]</button>
+        <button @click="movePage(pageIndex_second)">[{{pageIndex_second}}]</button>
+        <button @click="movePage(pageIndex_third)">[{{pageIndex_third}}]</button>
+        <button @click="movePage(pageIndex_fourth)">[{{pageIndex_fourth}}]</button>
+        <button @click="movePage(pageIndex_fifth)">[{{pageIndex_fifth}}]</button>
       </div>
       <span @click="moveRightPage">></span>
       <!-- <span @click="moveRightIndex">>></span> -->
@@ -54,6 +56,9 @@
 
 <script>
 import tableAttributes from '../data_storage/tableAttributes'
+import Vue from 'vue'
+
+
 
 export default {
   name: 'list',
@@ -63,7 +68,9 @@ export default {
       pageNum : 1,
       pageIndex : 1,
       // allPageNum : 10,
-      slicePage : 3
+      slicePage : 3,
+      selectPage: 1,
+      pageCount : 2
       }
   },
   
@@ -84,9 +91,11 @@ export default {
     },
 
     pageIndex_first() {
+      this.pageNum = 1;
       return(this.pageIndex);
     },
     pageIndex_second() {
+      this.pageNum = 2;
       return(this.pageIndex + 1);
     },    pageIndex_third() {
       return(this.pageIndex + 2);
@@ -109,7 +118,6 @@ export default {
     moveLeftPage (){
       if (this.pageNum !== 1)
         this.pageNum -= 1;
-        console.log(pageNum);
     },
 
     moveRightPage () {
@@ -127,6 +135,10 @@ export default {
         index === el.contentIndex
       )
       this.$router.push('/_submenu/'+postIndex)
+    },
+
+    changePage: function (pageNum) {
+                this.selectPage = pageNum
     }
   }
 }
