@@ -28,11 +28,11 @@
       </table>
     </div>
     <div class="paginationArea">
-      <span @click="moveLeftPage">&lt;</span>
+      <button @click="moveLeftPage">&lt;</button>
       <span>{{pageNum}}/{{allPageNum}}</span>
-      <span @click="moveRightPage">></span>
+      <button @click="moveRightPage">></button>
       <div></div>
-      <span @click="moveLeftIndex">&lt;&lt;</span>
+      <!-- <span @click="moveLeftIndex">&lt;&lt;</span> -->
       <span @click="moveLeftPage">&lt;</span>
       <div>
         <span @click="movePage(pageIndex_first)">[{{pageIndex_first}}]</span>
@@ -42,7 +42,7 @@
         <span @click="movePage(pageIndex_fifth)">[{{pageIndex_fifth}}]</span>
       </div>
       <span @click="moveRightPage">></span>
-      <span @click="moveRightIndex">>></span>
+      <!-- <span @click="moveRightIndex">>></span> -->
     </div>
     
     <!-- <div class="footer">
@@ -109,6 +109,7 @@ export default {
     moveLeftPage (){
       if (this.pageNum !== 1)
         this.pageNum -= 1;
+        console.log(pageNum);
     },
 
     moveRightPage () {
@@ -117,8 +118,8 @@ export default {
     },
 
     movePage (pageIndex_seq) {
-      if (pageIndex_seq)
-        this.pageNum = this.pageNum;
+      if (pageIndex_seq <= this.allPageNum)
+        this.pageNum == pageIndex_seq;
     },
 
     moveToPost(index) {
