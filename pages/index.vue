@@ -30,8 +30,8 @@
     <div>
     </div>
     <div class="paginationArea">
-      <!-- <span @click="moveLeftIndex">&lt;&lt;</span> -->
-      <span @click="moveLeftPage">&lt;</span>
+      <button @click="moveLeftIndex">&lt;&lt;</button>
+      <button @click="moveLeftPage">&lt;</button>
       <div>
         <button @click="movePage(pageIndex_first)">{{pageIndex_first}}</button>
         <button @click="movePage(pageIndex_second)">{{pageIndex_second}}</button>
@@ -39,8 +39,8 @@
         <button @click="movePage(pageIndex_fourth)">{{pageIndex_fourth}}</button>
         <button @click="movePage(pageIndex_fifth)">{{pageIndex_fifth}}</button>
       </div>
-      <span @click="moveRightPage">></span>
-      <!-- <span @click="moveRightIndex">>></span> -->
+      <button @click="moveRightPage">></button>
+      <button @click="moveRightIndex">>></button>
     </div>
     
     <!-- <div class="footer">
@@ -64,7 +64,7 @@ export default {
       pageNum : 1,
       pageIndex : 1,
       // allPageNum : 10,
-      slicePage : 3,
+      slicePage : 1,
       selectPage: 1,
       pageCount : 2
       }
@@ -122,6 +122,19 @@ export default {
     movePage (pageIndex_seq) {
       if (pageIndex_seq <= this.allPageNum)
         this.pageNum = pageIndex_seq;
+    },
+
+    moveLeftIndex (){
+      if (this.pageIndex >= this.allPageNum)
+        this.pageIndex = this.pageIndex - 5;
+    },
+
+    moveRightIndex (){
+      if (this.pageIndex < this.allPageNum)
+        this.pageIndex = this.pageIndex + 5;
+      console.log(this.pageIndex);
+      console.log(this.allPageNum);
+
     },
 
     moveToPost(index) {
