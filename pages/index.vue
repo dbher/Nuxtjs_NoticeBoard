@@ -125,10 +125,8 @@ export default {
     },
 
     moveLeftIndex (){
-      if (this.pageIndex - 5 >= this.allPageNum)
+      if (this.pageIndex - 5 >= 1)
         this.pageIndex = this.pageIndex - 5;
-      console.log("pageIndex:" + this.pageIndex);
-      console.log("allPageNum" + this.allPageNum);
     },
 
     moveRightIndex (){
