@@ -127,12 +127,13 @@ export default {
     moveLeftIndex (){
       if (this.pageIndex - 5 >= 1)
         this.pageIndex = this.pageIndex - 5;
+        this.pageNum = this.pageIndex;
     },
 
     moveRightIndex (){
       if (this.pageIndex + 5 <= this.allPageNum)
         this.pageIndex = this.pageIndex + 5;
-
+        this.pageNum = this.pageIndex;
     },
 
     moveToPost(index) {
