@@ -1,6 +1,9 @@
 export const state = () => ({
 	list: [],
-	commentList: []
+	commentList: [],
+	deletedcomment: [
+
+	]
 });
 
 export const mutations = {
@@ -21,7 +24,8 @@ export const mutations = {
 	},
 
 	deleteComment(state, index) {
-		state.commentList.splice(index, 1);
+		state.commentList[index].commentContent = "삭제된 댓글입니다";
+		// state.commentList.splice(index, 1);
 	}
 }
 
