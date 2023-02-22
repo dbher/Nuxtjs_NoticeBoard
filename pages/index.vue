@@ -104,7 +104,7 @@ export default {
     },
 
     allPageNum() {
-      return(Math.ceil((this.callData.length + 1) / this.slicePage));
+      return(Math.ceil((this.callData.length) / this.slicePage));
     }
   },
 
@@ -125,15 +125,15 @@ export default {
     },
 
     moveLeftIndex (){
-      if (this.pageIndex >= this.allPageNum)
+      if (this.pageIndex - 5 >= this.allPageNum)
         this.pageIndex = this.pageIndex - 5;
+      console.log("pageIndex:" + this.pageIndex);
+      console.log("allPageNum" + this.allPageNum);
     },
 
     moveRightIndex (){
-      if (this.pageIndex < this.allPageNum)
+      if (this.pageIndex + 5 <= this.allPageNum)
         this.pageIndex = this.pageIndex + 5;
-      console.log(this.pageIndex);
-      console.log(this.allPageNum);
 
     },
 
@@ -144,9 +144,9 @@ export default {
       this.$router.push('/_submenu/'+postIndex)
     },
 
-    changePage: function (pageNum) {
-                this.selectPage = pageNum
-    }
+    // changePage: function (pageNum) {
+    //             this.selectPage = pageNum
+    // }
   }
 }
 </script>
