@@ -48,7 +48,7 @@
               <span>{{ user.commentNickname }}</span>
               <span>/</span>
               <span>{{ user.commentContent }}</span>
-              <span @click="deleteComment(index)">[삭제]</span>
+              <span @click="deleteComment(user.commentIndex)">[삭제]</span>
             </div>
           </div>
         </div>
