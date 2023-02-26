@@ -1,12 +1,6 @@
 export const state = () => ({
 	list: [],
-	commentList: {
-		commentID: "",
-    	commentNickname: "",
-    	commentContent: "",
-    	commentList: {} 
-	}
-	,
+	commentList: [],
 });
 
 export const mutations = {
@@ -53,7 +47,15 @@ export const actions = {
 
 	deleteCommentToList({ commit }, index) {
 		commit('deleteComment', index);
-	}
+	},
+
+	addSubCommentToList({ commit }, list) {
+		commit('addComment', list)
+	},
+
+	deleteSubCommentToList({ commit }, index) {
+		commit('deleteComment', index);
+	},
 }
 
 export const getters = {

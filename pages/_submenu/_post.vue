@@ -42,7 +42,7 @@
           <div
             :key="index"
             v-for="(user, index) in findCommentData"
-            class="comment_box"
+            class="comment"
           >
             <div>
               <span>{{ user.commentNickname }}</span>
@@ -56,7 +56,19 @@
               <div>
               <span>@{{user.commentNickname}},</span>
               <input placeholder="대댓글작성하기" v-model="subComment" type="text">
-              <button>대댓글달기</button>
+              <button @click="addSubComment(user.commentIndex)">대댓글달기</button>
+              <div v-if="subCommentList.length">
+                <template v-for="(subComment, index) in subCommentList">
+                  <div v-if="user.commentIndex === subCommentList.commentIndex">
+                      <div>
+                        <span>{{subComment.commentNickname}}/</span>
+                        <span>{{subComment.commentContent}}/</span>
+                      </div>
+                      <input placeholder="대댓글작성하기" v-model="subComment.commentContent" type="text">
+                      <button @click="addSubComment(subComment.commentIndex)">대댓글달기</button>
+                  </div>
+                </template>
+              </div>
               </div>
             </div>
           </div>
@@ -79,6 +91,7 @@ export default {
       commentNickname: "",
       commentContent: "",
       commentList: this.$store.state.commentList,
+      subCommentList: []
       // Tablelist: tableAttributes
     };
   },
@@ -152,13 +165,22 @@ export default {
       this.commentContent = "";
     },
 
+
     deleteComment(index) {
       this.$store.dispatch("deleteCommentToList", index);
     },
 
-    openSubcommentWritingArea() {
-
-    }
+    addSubComment() {
+      let subCommentData = {
+        postId: this.findList.contentIndex,
+        commentIndex: commentIndex,
+        commentNickname: this.commentNickname,
+        commentContent: this.commentContent,
+      };
+      this.subCommentList.push(nestedCommentData);
+      this.commentNickname = "";
+      this.commentContent = "";
+    },
   },
 };
 </script>
