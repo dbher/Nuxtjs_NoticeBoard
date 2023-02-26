@@ -65,8 +65,8 @@ export default {
       pageIndex : 1,
       // allPageNum : 10,
       slicePage : 1,
-      selectPage: 1,
-      pageCount : 2
+      selectPage: 1
+      // pageCount : 2
       }
   },
   
