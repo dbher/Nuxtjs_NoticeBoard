@@ -49,13 +49,22 @@
               <span>/</span>
               <span>{{ user.commentContent }}</span>
               <span @click="deleteComment(user.commentIndex)">[삭제]</span>
+              <!-- <button @click="openSubcommentWritingArea">대댓글쓰기</button>
+              <div v-if="isWrite==true"
+              ></div> -->
+              <!-- 대댓글 작성하는 란 먼저 만들기 -->
+              <div>
+              <span>@{{user.commentNickname}},</span>
+              <input placeholder="대댓글작성하기" v-model="subComment" type="text">
+              <button>대댓글달기</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- <Nuxt /> -->
-    <div class="footer"></div>
+    <!-- <div class="footer"></div> -->
   </div>
 </template>
 
@@ -88,6 +97,9 @@ export default {
     },
 
     findCommentData() {
+      if (!this.$store.state.commentList.length) {
+        return [];
+      }
       return this.$store.state.commentList.filter((comment) => {
         return comment.postId === this.findList.contentIndex;
       });
@@ -143,6 +155,10 @@ export default {
     deleteComment(index) {
       this.$store.dispatch("deleteCommentToList", index);
     },
+
+    openSubcommentWritingArea() {
+
+    }
   },
 };
 </script>

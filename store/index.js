@@ -1,9 +1,12 @@
 export const state = () => ({
 	list: [],
-	commentList: [],
-	deletedcomment: [
-
-	]
+	commentList: {
+		commentID: "",
+    	commentNickname: "",
+    	commentContent: "",
+    	commentList: {} 
+	}
+	,
 });
 
 export const mutations = {
