@@ -25,55 +25,8 @@
       </div>
     </div>
     <div class="comment_area">
-      <div class="add_comment">
-        <h3>댓글창</h3>
-        <div class="input_comment_area">
-          <span>닉네임</span>
-          <input placeholder="닉네임" v-model="commentNickname" type="text" />
-          <span>댓글</span>
-          <input
-            placeholder="댓글을 입력하세요"
-            v-model="commentContent"
-            type="text"
-          />
-          <button @click="addComment">댓글달기</button>
-        </div>
-        <div class="commentTable">
-          <div
-            :key="index"
-            v-for="(user, index) in findCommentData"
-            class="comment"
-          >
-            <div>
-              <span>{{ user.commentNickname }}</span>
-              <span>/</span>
-              <span>{{ user.commentContent }}</span>
-              <span @click="deleteComment(user.commentIndex)">[삭제]</span>
-              <!-- <button @click="openSubcommentWritingArea">대댓글쓰기</button>
-              <div v-if="isWrite==true"
-              ></div> -->
-              <!-- 대댓글 작성하는 란 먼저 만들기 -->
-              <div>
-              <span>@{{user.commentNickname}},</span>
-              <input placeholder="대댓글작성하기" v-model="subComment" type="text">
-              <button @click="addSubComment(user.commentIndex)">대댓글달기</button>
-              <div v-if="subCommentList.length">
-                <template v-for="(subComment, index) in subCommentList">
-                  <div v-if="user.commentIndex === subCommentList.commentIndex">
-                      <div>
-                        <span>{{subComment.commentNickname}}/</span>
-                        <span>{{subComment.commentContent}}/</span>
-                      </div>
-                      <input placeholder="대댓글작성하기" v-model="subComment.commentContent" type="text">
-                      <button @click="addSubComment(subComment.commentIndex)">대댓글달기</button>
-                  </div>
-                </template>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h3>댓글창</h3>
+      <CommentNode :replies="dummyData" />
     </div>
     <!-- <Nuxt /> -->
     <!-- <div class="footer"></div> -->
@@ -87,11 +40,26 @@ export default {
   name: "list",
   data() {
     return {
-      commentID: "",
-      commentNickname: "",
-      commentContent: "",
       commentList: this.$store.state.commentList,
-      subCommentList: []
+      dummyData: [
+        {
+          id: 1,
+          content: "I'm 1",
+          nickname: "dabin",
+          replies: [
+            { id: 2, nickname: "dabin", content: "I'm 2" },
+            {
+              id: 3,
+              nickname: "dabin",
+              content: "I'm 3",
+              replies: [
+                { id: 4, nickname: "dabin", content: "I'm 4" },
+                { id: 5, nickname: "dabin", content: "I'm 5" },
+              ],
+            },
+          ],
+        },
+      ],
       // Tablelist: tableAttributes
     };
   },
@@ -141,7 +109,7 @@ export default {
       };
 
       console.log(params.contentIndex);
-	  
+
       this.$router.push({
         path: "/_submenu/update",
         query: { targetList: params },
@@ -164,7 +132,6 @@ export default {
       this.commentNickname = "";
       this.commentContent = "";
     },
-
 
     deleteComment(index) {
       this.$store.dispatch("deleteCommentToList", index);

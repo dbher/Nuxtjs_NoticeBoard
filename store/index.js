@@ -1,19 +1,19 @@
 export const state = () => ({
-	list: [],
+	postList: [],
 	commentList: [],
 });
 
 export const mutations = {
 	addContent(state, list) {
-		state.list.push(list)
+		state.postList.push(list)
 	},
 
 	deleteContent(state, index) {
-		state.list.splice(index, 1);
+		state.postList.splice(index, 1);
 	},
 
 	updateContent(state, editedPost) {
-		state.list.splice(editedPost.contentIndex - 1, 1, editedPost);
+		state.postList.splice(editedPost.contentIndex - 1, 1, editedPost);
 	},
 
 	addComment(state, comment) {
@@ -27,8 +27,8 @@ export const mutations = {
 }
 
 export const actions = {
-	addContentsToList({ commit }, list) {
-		commit('addContent', list)
+	addContentsToList({ commit }, content) {
+		commit('addContent', content)
 		console.log(list);
 	},
 
@@ -37,36 +37,28 @@ export const actions = {
 		console.log(index);
 	},
 
-	updateContentsToList({ commit }, editedPost) {
-		commit('updateContent', editedPost);
+	updateContentsToList({ commit }, content) {
+		commit('updateContent', content);
 	},
 
-	addCommentToList({ commit }, list) {
-		commit('addComment', list)
+	addCommentToList({ commit }, comment) {
+		commit('addComment', comment)
 	},
 
 	deleteCommentToList({ commit }, index) {
-		commit('deleteComment', index);
-	},
-
-	addSubCommentToList({ commit }, list) {
-		commit('addComment', list)
-	},
-
-	deleteSubCommentToList({ commit }, index) {
 		commit('deleteComment', index);
 	},
 }
 
 export const getters = {
 	getList(state) {
-		return state.list;
-		// return state.list.slice().reverse();
+		return state.postList;
+		// return state.postList.slice().reverse();
 
-		// const list = JSON.parse(JSON.stringify(state.list));
+		// const list = JSON.parse(JSON.stringify(state.postList));
 		// return (list.reverse());
 	},
 	// reverseList: state => {
-	// 	return state.list.slice().reverse();
+	// 	return state.postList.slice().reverse();
 	// }
 }
