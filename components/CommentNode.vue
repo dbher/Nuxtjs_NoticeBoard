@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div
+    <div 
       :style="{
         marginLeft: '16px',
         padding: '8px 12px',
@@ -8,12 +8,10 @@
       }"
     >
       <div v-for="reply in replies" :key="reply.id">
-        <p>commentId: {{ reply.id }}</p>
+        <p>- replyId: {{ reply.id }}</p>
         <p>- nickname: {{ reply.nickname }}</p>
         <p>- content: {{ reply.content }}</p>
-        <CommentNode :replies="reply.replies" :depth="depth + 1" />
-      </div>
-      <div class="add_comment">
+        <div class="add_comment">
         <div class="input_comment_area">
           <span>닉네임</span>
           <input placeholder="닉네임" v-model="nickname" type="text" />
@@ -23,8 +21,10 @@
             v-model="content"
             type="text"
           />
-          <button @click="addComment">댓글달기</button>
+          <button @click="addReply(reply, nickname, content)">대댓글달기</button>
         </div>
+      </div>
+        <CommentNode :replies="reply.replies" :depth="depth + 1" />
       </div>
     </div>
     <hr />
@@ -42,11 +42,22 @@ export default {
     },
   },
 
-  // methods: {
-  //   addComment({}) {
+  methods: {
+    addReply(reply, nickname, content) {
+      console.log("nickname:" + nickname);
+      console.log("content:" + content);
 
-  //   }
+      console.log(reply);
+      this.$store.dispatch("addReplyToList", relplyData);
+      this.nickname = "";
+      this.content = "";
+    },
   }
-};
+}
+
 </script>
-  
+
+<style>
+
+
+</style>

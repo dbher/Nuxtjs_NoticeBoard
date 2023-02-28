@@ -26,6 +26,19 @@
     </div>
     <div class="comment_area">
       <h3>댓글창</h3>
+      <div class="add_comment">
+        <div class="input_comment_area">
+          <span>닉네임</span>
+          <input placeholder="닉네임" v-model="nickname" type="text" />
+          <span>댓글</span>
+          <input
+            placeholder="댓글을 입력하세요"
+            v-model="content"
+            type="text"
+          />
+          <button @click="addComment(nickname, content)">댓글달기</button>
+        </div>
+      </div>
       <CommentNode :replies="dummyData" />
     </div>
     <!-- <Nuxt /> -->
@@ -116,38 +129,27 @@ export default {
       });
     },
 
-    addComment() {
-      let commentIndex = this.commentList.length;
+    // addComment() {
+    //   let commentIndex = this.commentList.length;
 
-      console.log("commentIndex");
-      console.log(commentIndex);
-      let commentData = {
-        postId: this.findList.contentIndex,
-        commentIndex: commentIndex,
-        commentNickname: this.commentNickname,
-        commentContent: this.commentContent,
-      };
-      console.log(commentData);
-      this.$store.dispatch("addCommentToList", commentData);
-      this.commentNickname = "";
-      this.commentContent = "";
-    },
+    //   console.log("commentIndex");
+    //   console.log(commentIndex);
+    //   let commentData = {
+    //     postId: this.findList.contentIndex,
+    //     commentIndex: commentIndex,
+    //     commentNickname: this.commentNickname,
+    //     commentContent: this.commentContent,
+    //   };
+    //   console.log(commentData);
+    //   this.$store.dispatch("addCommentToList", commentData);
+    //   this.commentNickname = "";
+    //   this.commentContent = "";
+    // },
 
+    
     deleteComment(index) {
       this.$store.dispatch("deleteCommentToList", index);
-    },
-
-    addSubComment() {
-      let subCommentData = {
-        postId: this.findList.contentIndex,
-        commentIndex: commentIndex,
-        commentNickname: this.commentNickname,
-        commentContent: this.commentContent,
-      };
-      this.subCommentList.push(nestedCommentData);
-      this.commentNickname = "";
-      this.commentContent = "";
-    },
+    }
   },
 };
 </script>
