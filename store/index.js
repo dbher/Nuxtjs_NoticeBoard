@@ -1,15 +1,18 @@
 export const state = () => ({
 	postList: [],
 	commentList: [],
+	commentListLength: Number,
 });
 
 export const mutations = {
 	addContent(state, list) {
-		state.postList.push(list)
+		console.log(this.commentListLength);
+		state.postList.push(list);
 	},
 
 	deleteContent(state, index) {
-		state.postList.splice(index, 1);
+		state.postList.splice(index - 1, 1);
+		console.log("0909");
 	},
 
 	updateContent(state, editedPost) {

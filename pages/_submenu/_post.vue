@@ -133,14 +133,14 @@ export default {
       });
     },
 
-    addComment() {
+    addComment(nickname, content) {
       let commentIndex = this.commentList.length;
 
       let commentData = {
         postId: this.findList.contentIndex,
         id: commentIndex,
-        nickname: this.commentNickname,
-        content: this.commentContent,
+        nickname: nickname,
+        content: content,
       };
       console.log(commentData);
       this.$store.dispatch("addCommentToList", commentData);
