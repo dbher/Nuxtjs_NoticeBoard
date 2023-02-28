@@ -39,7 +39,8 @@
           <button @click="addComment(nickname, content)">댓글달기</button>
         </div>
       </div>
-      <CommentNode :replies="dummyData" />
+      <!-- <CommentNode :replies="dummyData" /> -->
+      <CommentNode :replies="findCommentData" />
     </div>
     <!-- <Nuxt /> -->
     <!-- <div class="footer"></div> -->
@@ -83,11 +84,14 @@ export default {
     },
 
     callData() {
-      return this.$store.state.list;
+      return this.$store.state.postList;
     },
 
     findList() {
-      return this.callData[this.index];
+      if (this.callData && this.index !== undefined) {
+        return this.callData[this.index];
+      }
+      return {};
     },
 
     findCommentData() {
@@ -129,22 +133,20 @@ export default {
       });
     },
 
-    // addComment() {
-    //   let commentIndex = this.commentList.length;
+    addComment() {
+      let commentIndex = this.commentList.length;
 
-    //   console.log("commentIndex");
-    //   console.log(commentIndex);
-    //   let commentData = {
-    //     postId: this.findList.contentIndex,
-    //     commentIndex: commentIndex,
-    //     commentNickname: this.commentNickname,
-    //     commentContent: this.commentContent,
-    //   };
-    //   console.log(commentData);
-    //   this.$store.dispatch("addCommentToList", commentData);
-    //   this.commentNickname = "";
-    //   this.commentContent = "";
-    // },
+      let commentData = {
+        postId: this.findList.contentIndex,
+        id: commentIndex,
+        nickname: this.commentNickname,
+        content: this.commentContent,
+      };
+      console.log(commentData);
+      this.$store.dispatch("addCommentToList", commentData);
+      this.commentNickname = "";
+      this.commentContent = "";
+    },
 
     
     deleteComment(index) {

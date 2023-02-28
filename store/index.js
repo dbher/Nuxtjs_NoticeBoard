@@ -23,13 +23,16 @@ export const mutations = {
 	deleteComment(state, index) {
 		state.commentList[index].commentContent = "삭제된 댓글입니다";
 		// state.commentList.splice(index, 1);
+	},
+
+	addReply(state, comment){
+		state.commentList.commentList.push(comment);
 	}
 }
 
 export const actions = {
 	addContentsToList({ commit }, content) {
 		commit('addContent', content)
-		console.log(list);
 	},
 
 	deleteContentsToList({ commit }, index) {
