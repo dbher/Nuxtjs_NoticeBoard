@@ -11,6 +11,7 @@
         <p>- replyId: {{ reply.id }}</p>
         <p>- nickname: {{ reply.nickname }}</p>
         <p>- content: {{ reply.content }}</p>
+        <button @click="deleteComment(reply.id)">삭제</button>
         <div class="add_comment">
         <div class="input_comment_area">
           <span>닉네임</span>
@@ -48,9 +49,24 @@ export default {
       console.log("content:" + content);
 
       console.log(reply);
-      this.$store.dispatch("addReplyToList", relplyData);
+      let replyData = {
+        postId: reply.postId,
+        nickname: nickname,
+        content: content,
+      }
+      this.$store.dispatch("addReplyToList", replyData);
       this.nickname = "";
       this.content = "";
+    },
+    
+    deleteComment(index) {
+      this.$store.dispatch("deleteCommentToList", index);
+    }
+  },
+
+  computed: {
+    getContentIndex() {
+      return this.$route.params.post;
     },
   }
 }

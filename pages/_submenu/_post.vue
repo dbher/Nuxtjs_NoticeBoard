@@ -110,7 +110,7 @@ export default {
     },
 
     deletePost() {
-      const deleteIndex = this.findList.contentIndex;
+      const deleteIndex = this.findList.contentIndex - 1;
 
       this.$store.dispatch("deleteContentsToList", deleteIndex);
       alert("글 삭제가 완료되었습니다. 게시판으로 이동합니다");
@@ -134,24 +134,22 @@ export default {
     },
 
     addComment(nickname, content) {
-      let commentIndex = this.commentList.length;
+      let commentKey = this.$store.state.Key;
 
       let commentData = {
         postId: this.findList.contentIndex,
-        id: commentIndex,
+        id: commentKey,
         nickname: nickname,
         content: content,
       };
       console.log(commentData);
       this.$store.dispatch("addCommentToList", commentData);
-      this.commentNickname = "";
-      this.commentContent = "";
+      this.nickname = "";
+      this.content = "";
     },
 
     
-    deleteComment(index) {
-      this.$store.dispatch("deleteCommentToList", index);
-    }
+
   },
 };
 </script>
